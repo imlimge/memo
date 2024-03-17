@@ -1,0 +1,64 @@
+[Node.js]
+- 출처: 패스트캠퍼스 - 프론트엔드 패키지 - part 3.01
+
+Node.js는 chrome V8 JavaScript 엔진으로 빌드된 JavaScript 런타임
+-> 런타임 : 프로그래밍 언어가 동작하는 환경
+
+==> 자바스크립트가 동작할 수 있는 환경을 만들어줌
+웹페이지를 개발할 때 도움을 받는다
+
+
+
+nvm
+Node version manager
+다양한 버전의 node.js를 설치하고 관리
+
+(맥)
+깃허브 링크
+https://github.com/nvm-sh/nvm?tab=readme-ov-file#installing-and-updating
+
+vscode에서 gitbash에서 nvm 설치
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+
+
+(윈도우즈)
+https://github.com/coreybutler/nvm-windows
+
+다운로드> nvm_setup.zip
+
+
+
+버전확인
+nvm --version
+
+- nvm 리스트 확인
+nvm ls
+
+- nvm 설치
+nvm install 버전숫자
+ex) nvm install 12.14.1
+
+- nvm 버전 선택
+nvm use 버전숫자
+ex) nvm use 12.14.1
+
+- nvm 버전 삭제
+nvm uninstall 버전숫자
+ex) nvm uninstall 12.14.1
+
+- nvm 명령어 보기
+nvm --help
+
+- node 버전확인
+node --version
+
+
+
+
+npm
+Node package manager
+전 세계의 개발자들이 만든 다양한 기능(패키지,모듈)등을 관리
+
+
+-현재 폴더에 package.json파일 생성
+npm init -y

@@ -1,0 +1,119 @@
+[ vscode에서 git 버전관리 ]
+- 출처: 패스트캠퍼스 - 프론트엔드 패키지 - part 2. Git을 활용한 버전관리
+
+
+-- 처음 순서 -------------------------------
+
+터미널에서 파워셀
+
+git --version
+
+- 현재 프로젝트에서 변경사학 추적(버전관리)시작
+git init
+
+- 윈도우
+git config --global core.autocrlf true
+
+- 정보등록
+git config --global user.name 'imlimge'
+git config --global user.email 'limge12@gmail.com'
+it config --global --list
+// 리스트 출력 됨
+
+git status
+// 파일목록 출력 됨
+
+git add .
+
+git status
+// 파일들 내용 출력 됨
+
+git commit -m 'Start project'
+// Start project 로 설명 쓰여있음
+
+git log
+git log commit
+
+- 깃주소 사용
+git remote add origin https://github.com/imlimge/starbucks.git
+
+git push origin master
+//시작하면 푸쉬
+
+
+-- 수정 및 푸쉬 -------------------------------
+git status
+git add .
+git status (파일 색상변경 확인)
+git commit -m '내용'
+git log
+git push origin master
+
+
+
+-- 버전 돌아가기 -------------------------------
+git reset --hard HEAD~1
+// 한단계 전으로 돌아가기
+
+git reset --hard ORIG_HEAD
+// 한단계 다시 되돌리기
+
+
+-- 참고 -------------------------------
+M - modified file (수정된 파일)
+U - Untracked file (새로 생성되어 추적하지 않은 파일)
+
+
+
+- 개행 문자(Newline) 설정
+- 윈도우
+git config --global core.autocrlf true
+- 맥
+git config --global core.autocrlf input
+
+
+- 모든 파일의 변경사항을 추적하도록 지정
+git add .
+
+- 변경사항 추적할 특정파일 지정
+git add index.html
+
+
+- 메세지(-m)와 함께 버전 생성
+git commit -m '메세지'
+
+
+- 변경 된 상황 파악 가능
+git status
+
+
+- 수정확인 가능
+git log
+
+- 푸쉬하기
+git push origin master
+
+
+
+- 브랜치 확인
+git branch
+// master
+
+- 브랜치 확인 a (원격저장소에 있는 목록 확인)
+git branch -a 
+// remotes/origin/master
+
+- 브랜치 확인 r ()
+git branch -r 
+// origin/master
+
+
+
+- 브랜치 생성
+git branch '이름'
+
+- 브랜치 변경
+git checkout '브랜치 이름'
+
+- 브랜치 가져오기
+git checkout -t origin/브랜치이름

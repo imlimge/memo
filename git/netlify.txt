@@ -1,0 +1,6 @@
+[ netlify ]
+
+https://www.netlify.com/
+
+깃허브와 연결해서 사이트 배포 가능
+
