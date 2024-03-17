@@ -1,0 +1,37 @@
+[산술 연산자 (arithmetic operator)]
+console.log(1 + 2)
+console.log(5 - 7)
+console.log(3 * 4)
+console.log(10 / 2)
+
+나머지 연산자
+console.log(7 % 5)
+
+
+
+/[할당 연산자 (assignment operator)]
+let a = 2
+// a = a + 1
+a += 1
+// 위와 내용 같음
+
+console.log(a)
+
+해당자리에 
+= * - + % 동일하게 가능
+
+
+
+[비교 연산자 (comparison operator)]
+
+const a = 1
+const b = 1
+console.log( a === b)
+
+ === 일치 연산자 : 왼쪽과 오른쪽이 일치 하는가 (타입도 비교)
+ !== 불일치 연산자 : 왼쪽과 오른쪽이 일치 하지 않는가
+ < , > : 크기 비교
+ <= , >= : 크거나 같은지 비교 (=기호를 <보다 뒤에 작성)
+ 
+
+

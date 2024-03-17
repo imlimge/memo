@@ -62,3 +62,87 @@ Node package manager
 
 -현재 폴더에 package.json파일 생성
 npm init -y
+
+
+- node모듈, 파셀번들러 설치
+npm install parcel-bundler -D
+
+  "devDependencies": {
+    "parcel-bundler": "^1.12.5"
+  },
+
+
+- loadsh 설치
+npm install loadsh
+
+  "dependencies": {
+    "loadsh": "^0.0.4"
+  }
+
+------------------------------
+- devDependencies/dependencies의 차이
+
+D 개발용 의존성 패키지 설치
+>> 개발할때만 필요하고 웹브라우저에서는 필요 없음
+
+일반 의존성 설치
+>> 웹브라우저에서 동작하는 용도 
+------------------------------
+
+
+- npm 설치
+npm i / npm install
+
+- 최신 버전 확인
+npm info 이름
+ex)npm info lodash
+
+- 버전 인스톨
+ex)npm install lodash@4.17.21
+
+- 버전 업데이트
+npm update lodash
+
+
+------------------------------------------------------------
+
+.gitignore
+>> 깃에 올리지 않는 폴더들
+
+package.json
+>> 직접적으로 관리하는 개념
+package-lock.json
+>> 자동으로 관리되는 파일, 잠금처리 되어 있음
+
+
+------------------------------------------------------------
+
+
+유의적 버전
+Semantic Versioning, SemVer
+
+Major.Minor.Patch
+Major - 기존 버전과 호환되지 않는 새로운 버전
+Minor - 기존 버전과 호환되는 새로운 기능이 추가된 버전
+Patch - 기존 버전과 호환되는 버그 및 오타 등이 수전된 버전
+
+^Major.Minor.Patch
+^ - Major 버전 안에서 가장 최신 버전으로 업데이트 가능
+>> package.json에서 버전앞에 붙이지 않으면 업데이트 하지 않고 고정함
+
+
+------------------------------------------------------------
+
+
+깃으로 연동
+
+.gitignore 확인 후
+git init
+git status
+git add .
+git status
+git commit -m '메세지'
+git log
+깃 레퍼지토리 저장소 생성 및 주소 확인
+git remote add origin https://github.com/imlimge/test.git
+git push origin master
