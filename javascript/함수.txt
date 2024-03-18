@@ -1,0 +1,99 @@
+
+- 익명함수
+const 이름 = function(){}
+>> 함수가 익명함수 위에 실행되면 실행 안 됨
+
+- 기명함수
+function 이름 (){}
+>> 호이스팅 일어나서 함수 위에 실행해도 실행 됨
+
+
+
+- 화살표 함수
+()=>{} 
+
+const 이름 = (x) => x + 2
+const 이름 = x => x + 2
+> 매개변수가 한개면 ()생략 가능함
+
+>> 화살표 함수에서 객체를 사용할 때
+const 이름 = x => (
+  {x : 2}
+)
+
+function (){} 과 비교 **
+
+
+
+
+
+
+- 즉시 실행 함수 (IIFE, Immediately Invoked Function Expression)
+1. (function (){})()
+2. (function (){}())
+
+const a = 7
+
+function double(){
+  console.log(a * 2)
+}
+
+double(); >> 즉시실행함수를 쓸 때 ;없으면 함수의 종료시점을 알지 못하여 콘솔에러 
+
+(function (){
+  console.log(a * 2)
+})(); >> 이것도 아래 즉시실행 함수가 있다면 ; 필요
+(function (){
+  console.log(a * 2)
+}())  
+
+
+
+
+
+- 타이머 함수
+setTimeout(함수,시간) : 일정 시간 후 함수 실행
+setInterVal(함수,시간) : 시간 간격마다 함수 실행
+clearTimeout() : 설정된 TimeOut 함수 종료
+clearInterVal() : 설정된 Interval 함수 종료
+
+
+
+- 콜백 (Callback)
+함수의 인수를 사용되는 함수
+
+ex) setTimeout(함수,시간)
+여기서 인수로 사용된 함수가 콜백함수
+
+function timeout(a){
+    setTimeout(()=>{
+    console.log('111')
+    a()
+  },3000)
+}
+
+timeout(()=>{
+  console.log('222')
+})
+
+
+
+- 생성자 함수 (이름이 파스칼케이스. 첫글자 대문자)
+function Aaaa (a,b){
+  this.a1 = a
+  this.b1 = b
+}
+
+const bb = new Aaaa('111','222')
+
+
+- ES6 클래스
+class Aaaa{
+  constructor(a,b){
+    this.a1 = a
+    this.b1 = b
+  }
+
+   >> constructor : function(){} 도 가능
+
+}

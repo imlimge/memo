@@ -1,0 +1,49 @@
+- ES6 클래스
+class Aaaa{
+  constructor(a,b){
+    this.a1 = a
+    this.b1 = b
+  }
+
+   >> constructor : function(){} 도 가능
+
+}
+
+
+
+
+- 상속
+
+class Drink{
+  constructor(name, liter){
+    this.name = name,
+    this.liter = liter
+  }
+}
+
+const myDrink = new Drink('음료',200)
+console.log(myDrink)
+
+class Beer extends Drink {
+  constructor(name, liter){
+    super(name, liter)
+    // 실행되면 곧 Beer과 그게 Drink로 올라간다
+  }
+}
+const myBeer = new Beer('기네스',500)
+const yourBeer = new Beer('스텔라',300)
+
+
+// Drink를 상속받은 milk
+class milk extends Drink {
+  constructor(name, liter, color){
+    super(name, liter)
+    this.color = color
+    // 확장
+  }
+}
+
+
+
+
+

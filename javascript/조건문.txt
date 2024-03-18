@@ -1,0 +1,35 @@
+조건문 (Switch statement)
+
+- if
+if(조건) {} 
+else if (조건) {}
+else {}
+
+
+- Switch
+switch(값){
+  case 조건:
+    break
+  default:  // 마지막에 실행되는 else와 같은 것
+}
+
+기본적으로는 if문을 쓰거나 딱 떨어지는 값이 있다면
+switch가 직관적일 수 있다.
+
+
+
+
+
+------------------------------------------
+
+참 같은 값과 거짓 같은 값
+
+형변환 (Type conversion)
+
+Truthy  (참 같은 값)
+true, {}, [], 1, 2, 'false', -12, '3.14' ...
+
+Falsy (거짓 같은 값)
+false, '', null, undefined, 0, -0, NaN
+
+ex)조건문에 1이면 true 0이면 false로 간주

@@ -1,0 +1,4 @@
+반복문 (For statement)
+
+for문
+for(시작조건; 종료조건; 변화조건){}

@@ -15,8 +15,6 @@ let a = 2
 a += 1
 // 위와 내용 같음
 
-console.log(a)
-
 해당자리에 
 = * - + % 동일하게 가능
 
@@ -24,14 +22,36 @@ console.log(a)
 
 [비교 연산자 (comparison operator)]
 
-const a = 1
-const b = 1
-console.log( a === b)
-
- === 일치 연산자 : 왼쪽과 오른쪽이 일치 하는가 (타입도 비교)
+ === 일치 연산자 : 왼쪽과 오른쪽이 일치 하는가 (타입도 비교, 타입이 다르면 다른것)
  !== 불일치 연산자 : 왼쪽과 오른쪽이 일치 하지 않는가
  < , > : 크기 비교
  <= , >= : 크거나 같은지 비교 (=기호를 <보다 뒤에 작성)
  
+
+==  동등연산자 : 왼쪽과 오른쪽이 일치 하는가(타입이 변환되어 비교, 형변환)
+
+[형변환(Type conversion)]
+const a = 1
+const b = '1'
+
+console.log(a === b)
+>> false
+console.log(a == b)
+>> true
+
+
+
+
+// [논리 연산자 (Logical operator)]
+
+&& :  그리고, and연산자 / 전부 true 일때 true, 하나라도 false라면 false 출력
+|| : 또는, or연산자 / true가 하나 이상일 때 true 출력
+! : 부정, not연산자 /  true면 false반환 false면 true 반환 반대값 출력
+
+
+
+// [삼항 연산자 (ternary operator)]
+
+값 ? '참' : '거짓'
 
 

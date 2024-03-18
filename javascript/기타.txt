@@ -1,0 +1,97 @@
+
+- 내용 넣기
+요소.textContent = `값`
+
+
+- 요소만들기
+const 이름 = document.querySelector('li')
+
+
+- arguments 객체
+arguments : arguments를 객체로 사용 가능함. 
+console에 함수를 사용할 때 쓴 인수가 배열로 생성
+
+ex)
+function sum(x, y){
+console.log(arguments)
+return arguments[0] + arguments[1]
+}
+console.log(sum(1,3))
+>> Arguments(2) [1, 3, callee: ƒ, Symbol(Symbol.iterator): ƒ]
+
+
+
+
+- 호이스팅 (Hoisting)
+함수 선언부가 유효범위 최상단으로 끌어올려지는 현상
+
+
+
+- 프로토타입 (prototype)
+// 프로토타입을 사용한 경우
+function Aaa() {}
+
+// Aaa 객체의 프로토타입에 함수 추가
+Aaa.prototype.함수이름 = function() {
+    // 함수의 내용
+};
+
+// Aaa 객체의 인스턴스 생성
+const aa = new Aaa();
+
+
+// 프로토타입을 사용하지 않은 경우
+function Aaa() {
+    // 인스턴스마다 고유한 함수 생성 (내부에 함수 셋팅)
+    this.함수이름 = function() {
+        // 함수의 내용
+    };
+}
+
+// Aaa 객체의 인스턴스 생성
+const aa = new Aaa();
+
+.prototype을 쓰면 생성자 함수에만 함수가 추가되어
+인스턴스에서는 함수가 생성되지 않고 모든 인스턴스에서 공유되어 사용가능
+.prototype없이 생성자 함수 내부에 추가하면
+각 인스턴스에 고유한 함수가 발생하고
+인스턴스 각각 함수를 가지게 되어 메모리 증가로 이어짐
+
+
+
+
+- this
+일반 함수는 호출 위치에 따라 this 정의
+화살표 함수는 자신이 선언된 함수가 정의된 위치가 아니라 외부의 전역 컨텍스트 에서 this 정의
+
+const aa = {
+  name: 'aa',
+  normal: function(){ 
+    console.log(this.name)  // 콘솔 aa
+  },
+  arrow: ()=>{
+    console.log(this.name) // 콘솔 undefined
+  }
+}
+
+aa.normal()  >>  여기서 호출되어서 aa 출력 됨
+aa.arrow() >> aa 객체가 아닌 window를 가리킴 name찾을 수 없음
+
+
+
+const timer = {
+  aa: 'aaa',
+  timeout: function(){
+
+    setTimeout(()=>{
+      console.log(this.aa)
+    },2000),   >>만들어진 함수 범위 내 즉 timeout까지 범위라서 timer 객체를 가리키게 됨 aaa 출력
+
+    setTimeout(function(){
+      console.log(this.aa)
+    },2000),   >> 호출 위치에 따라 setTimeout 내에서 호출되어 전역 객체 window를 가리켜 undefined됨
+
+  }
+
+}
+timer.timeout()
