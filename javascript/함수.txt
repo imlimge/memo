@@ -60,9 +60,13 @@ clearInterVal() : 설정된 Interval 함수 종료
 
 
 - 콜백 (Callback)
-함수의 인수를 사용되는 함수
+함수,메소드의 인수로 사용되는 함수
 
-ex) setTimeout(함수,시간)
+
+
+ex) 
+forEach(function(){})  
+setTimeout(함수,시간)
 여기서 인수로 사용된 함수가 콜백함수
 
 function timeout(a){

@@ -1,0 +1,20 @@
+Math.abs(-10)
+>> 10 absolute
+
+Math.min(2,4)
+>> 작은 수 2
+
+Math.max(2,4)
+>> 큰수 4
+
+Math.ceil(3.14)
+>> 올림 4
+
+Math.floor(3.14)
+>> 내림 3
+
+Math.round(3.14)
+>> 반올림 3
+
+Math.random()
+>> 0에서 1미만의 수를 랜덤으로 반환 
