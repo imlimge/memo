@@ -140,7 +140,7 @@ const [, ,b] = list
 
 ********************************************************
 
-전개 연산자 (Spread)
+- 전개 연산자 (Spread)
 
 
 const list = ['lim','yellow','chicken']
@@ -160,6 +160,33 @@ function toO(a,b,c){
 > toO('lim', 'yellow', 'chicken') 와 동일함
 
 
+- 키와 값의 이름이 같을 때
+1.
+function toO(a,b,c){
+  return{
+    a: a,
+    b: b,
+    c: c
+  }
+}
+
+2.
+function toO(a,b,c){
+  return{
+    a,
+    b,
+    c
+  }
+}
+
+3.
+const toO = (a,b,c)=> ({a,b,c})
+
+// toO(...list) >> {a:'lim',b:'yellow',c:'chicken'}
+>> 셋 다 동일한 값 출력
+
+
+
 function toO(a,b,c){
   return{
     [a]: a,
@@ -170,7 +197,7 @@ function toO(a,b,c){
 // toO(...list) >> {lim: 'lim', yellow: 'yellow', chicken: 'chicken'}
 > 키에 할당하고 싶으면 정적이아닌 동적으로 지정함
 
-
+- 또 다른 예시
 const key = 'name';
 const value = 'lim';
 
@@ -185,3 +212,88 @@ const obj = {
 // obj >> {key: 'lim'}
 
 
+
+
+-- 나머지 매개변수 (rest parameter)
+매개변수에 전개 연산자를 사용 가능함
+
+const list = ['lim','yellow','chicken','apple']
+function toO(a,b,...c){
+  return{
+    aa: a,
+    bb: b,
+    cc: c
+  }
+}
+// toO(...list) >> {aa:'lim',bb:'yellow',cc:['chicken','apple']}
+>> 이때 ...c가 전개 연산자가 되면서 cc는 배열이 됨
+>> 나머지를 전부 받게 된다
+
+
+
+********************************************************
+
+- 데이터 불변성(Immutability)
+
+원시 데이터 : String, Number, Boolean, undefined, null
+원시데이터들은 원래 값이 있다면 새로 생성하는게 아니라 그 주소를 향하게 함
+원시 데이터들은 불변성을 가지고 있기 때문에 값이 다르면 다르다고 이해할 수 있음
+
+참조형 데이터 : Object, Array, Function은
+모양이 같아도 같지 않을 수 있다.
+또한 데이터가 복사 되는개념이 아니고 메모리의 참조 주소가 변하기 때문에
+만약 a,b 다른 객체에 b = a 를 할당한다면
+라고 한다면 a.값 = 새값
+할 때 b의 값도 변할 수 있다.
+
+
+********************************************************
+
+- 얕은복사 깊은복사 
+
+
+
+const user = {
+  name:'lim',
+  color: 'yellow',
+  food: ['chicken'] 
+}
+
+
+const user2 = user
+일 때 user의 내용을 변경하면 user2의 내용도 변경 됨
+// user2 === user >> true
+
+
+-- 얕은 복사
+const user2 = Object.assign({},user)
+// user2 === user >> false
+// user 값을 변경해도 user2 값은 변경 없음
+
+const user2 = {...user}
+// user2 === user >> false
+// user 값을 변경해도 user2 값은 변경 없음
+
+다만 나중에 user의 food에 값을 push하면  user2에 food에도 새로운 값이 추가 됨
+
+
+-- 깊은 복사
+(lodash 사용 시)
+패키지에서 import _ from 'lodash' 임포트 또는 
+const _ = require('lodash');
+const user2 = _.cloneDeep(user)
+
+(JSON.parse()와 JSON.stringify() 사용 시)
+const user2 = JSON.parse(JSON.stringify(user));
+>> 순환 참조가 없는 경우에 적합
+>> 함수나 프로토타입 메서드를 복사하지 않음
+>> undefined, NaN 값들은 JSON으로 직렬화 되지 않아 복사에서 손실
+
+********************************************************
+
+
+가져오기
+
+와일드카드
+import * as A from './aaa'
+// A >> 모든 것들 가져오기
