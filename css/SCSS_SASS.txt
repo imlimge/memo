@@ -1,0 +1,489 @@
+- CSS가 동작하기 전에 사용하는 기능
+- CSS Preprocessor 
+- CSS 전(예비) 처리기
+
+일반적으로 Less, Sass(SCSS), Stylus 이렇게 3가지가 유명
+
+
+
+Sass는 기본적으로 문법이 두가지가 있는데 기존 CSS와 호환이 잘 안되어
+호환이 잘 되게 SCSS가 나왔다. 최근에는 SCSS 많이 사용
+
+
+https://www.sassmeister.com/
+
+Sass의 3버전에서 등장한 SCSS
+Sass :  {} , ; 없음
+SCSS :  {} , ; 있음
+
+
+주석은 두가지 가능하지만 CSS로 컴파일 될 떄 //는 변환되지 않아서
+주석을 유지하려면 기존 /* */ 사용해야함
+// , /* */
+
+
+
+[ 중첩 ]
+
+.aa{
+  ul{
+    li{
+      .a{
+
+      }
+      .b{
+
+      }
+    }
+  }
+}
+>> 자동으로 후손선택자
+
+
+
+.aa{
+  > ul{
+  > li{
+      .a{
+
+      }
+      .b{
+
+      }
+    }
+  }
+}
+>> 자식선택자로 하고자 할 때 > 를 붙인다
+
+
+
+
+
+
+[ 상위선택자 참조 & ]
+
+.bb {
+    position:absolute;
+    & .on{
+        color: red;
+    }
+    &.off{
+        color: blue;
+    }
+}
+
+.aa {
+ li {
+    &:last-child{
+        margin-right:0;
+    } 
+ }
+}
+
+
+>> CSS일 때
+.bb {
+  position: absolute;
+}
+.bb .on {
+  color: red;
+}
+.bb.off {
+  color: blue;
+}
+// 띄어쓰기에 따라 달라진다
+
+.aa li:last-child {
+  margin-right: 0;
+}
+
+
+
+- 네이밍도 가능
+.font-size{
+    &-small {font-size: 12px; }
+    &-medium {font-size: 16px; }
+    &-large {font-size: 24px; }
+}
+
+>> CSS일 때
+.font-size-small {
+  font-size: 12px;
+}
+.font-size-medium {
+  font-size: 16px;
+}
+.font-size-large {
+  font-size: 24px;
+}
+
+
+- hover
+&:hover{
+
+}
+
+
+[ 중첩된 속성 : ]
+같은 네임스페이스를 가진 속성에 :를 붙여서 설정이 가능하다
+
+.aa{
+   color:orange;
+   font: {
+       weight:bold;
+       size: 10px;
+     };
+    margin: {
+        top: 10px;
+        left: 20px;
+    };
+}
+
+>> CSS일 때
+.aa {
+  color: orange;
+  font-weight: bold;
+  font-size: 10px;
+  margin-top: 10px;
+  margin-left: 20px;
+}
+
+
+
+[ 변수 $ ]
+
+- 전역 변수 
+$size: 10px
+.aa {
+  color: orange;
+  font-size: $size;
+  .bb {
+  margin-top: $size;
+  margin-left: $size;
+  }
+}
+
+.cc {
+  width: $size;
+}
+
+
+- 지역 변수 
+.aa {
+  $size: 10px
+
+  color: orange;
+  font-size: $size;
+  .bb {
+  margin-top: $size;
+  margin-left: $size;
+  }
+}
+
+.cc {
+  width: $size;
+}
+>> 이 상태일 때 .cc에서 쓸 수 없음
+
+
+
+
+$size: 10px;
+.aa {
+  color: orange;
+  font-size: $size; // 10px
+  .bb {
+  $size: 20px
+  margin-top: $size; // 20px
+  margin-left: $size; // 20px
+  }
+  width: $size; // 10px 강의에서는 20이 나온다고 하는데 아무래도 10이 출력된다
+}
+
+.cc {
+  width: $size; // 10px
+}
+
+
+
+[ 산술연산 ]
++,-,*,(/),% 사용
+/는 단축속성에 사용되어서 ()안에 /를 넣어 줘야 함
+또는 변수에 할당하여 / 바로 사용
+또는 다른 산술연산자를 사용하여 가능.
+
+다른 단위의 산술연산은 불가능
+
+
+.aa {
+  $size : 10px;
+    width: 20px + 10px;
+    height: 20px - 10px;
+    font-size: 10px * 2;
+    // margin: 10px / 2;  >> 출력 안 됨
+    margin:( 10px / 2);   // 5px
+    margin: $size/2;      // 5px
+    margin: 10px + 10px / 2;    // 15px
+    padding: 20px % 7px;
+    
+}
+
+.bb {
+    font-size: 10px;
+    line-height: 10px;
+    font-family: sefif;
+    font: 10px / 10px sefif;
+}
+
+
+
+[ 재활용 @mixin ]
+설정 : @mixin 이름{};
+재활용 : @include 이름{};
+
+@mixin center{
+  display:flex;
+  justify-content:center;
+  align-items: center;
+}
+
+.aa {
+  @include center;
+    .bb{
+      @include center;
+    }
+  }
+
+.cc{
+  @include center;
+}
+
+
+-----------------------------------------
+
+개별설정 :
+>> 인수를 이용하여 국소적인 설정 가능
+
+@mixin size{
+  width: 100px;
+  height: 100px;
+}
+
+.aa {
+  @include size;
+    .bb{
+      @include size;
+    }
+  }
+
+.cc{
+  @include size;
+}
+
+
+>> 인수 전체 셋팅
+@mixin size($size){
+  width: $size;
+  height: $size;
+}
+
+.aa {
+  @include size(200px);
+    .bb{
+      @include size(100px);
+    }
+  }
+
+.cc{
+  @include size(100px);
+}
+
+
+
+>> 인수 기본 셋팅
+@mixin size($size:100px){
+  width: $size;
+  height: $size;
+}
+
+.aa {
+  @include size;
+    .bb{
+      @include size(200px);
+      // .aa .bb {} 에만  width,height 200px 적용
+    }
+  }
+
+.cc{
+  @include size;
+}
+
+
+
+@mixin size($size:100px, $color:tomato){
+  ...
+}
+
+ @include size(200px,green);
+ 순서대로 설정할 떄
+ @include size($color:green);
+ 키워드 인수로 사용하면 순서 상관없이 키워드로 인수 설정
+
+
+
+
+
+[ 반복문 @for ]
+@for $무엇 from 몇번째숫자로시작 through 몇번까지반복{}
+
+보간법 사용 : #{$i}
+
+@for $i from 1 through 10{
+    .aa{
+        width: 100px;
+    }
+}
+
+>> 보간법 사용할 때
+@for $i from 1 through 10{
+    .aa:nth-child(#{$i}) {
+        width: 100px;
+    }
+}
+
+
+
+
+[ 함수 @function ]
+@function 이름(인수,인수){
+   @return 설정 @function 
+}
+>> mixin과 차이는 mixin은 값 그대로를 반환하지만 functiondms return을 통해 값을 반환
+
+@mixin center{
+  display:flex;
+  justify-content:center;
+  align-items: center;
+}
+
+@function ratio($size, $ratio){
+    @return $size * $ratio
+}
+
+.aa{
+    $width: 100px;
+    width: $width;
+    height: ratio($width, 1/2);
+    @include center;
+}
+
+
+
+
+[ 색상 내장 함수 ]
+- 인수끼리 색을 섞어서 새로운 색 출력
+mix($color, red);
+- 색상의 10% 더 밝게 출력
+lighten($color, 10%);
+- 색상의 10% 더 어둡게 출력
+darken($color, 10%);
+- 색상의 10%만큼 채도 증가
+saturate($color, 10%);
+- 색상의 10%만큼 채도 감소
+desaturate($color, 10%);
+- 색상 제거
+grayscale($color)
+- 색상 반전
+invert($color)
+- rgb 색상 조절
+rgba($color,투명도)
+
+
+
+
+[ 가져오기 ]
+@import url("주소.scss");
+>> .scss 생략 가능
+@import "./sub","./sub2";
+>> url 생략가능 , 다중불러오기 가능
+
+
+
+
+[ 데이터 ]
+$number	:	1 (.2, 20px, 2em 등)
+$string	:	bold (relative, "/images/a.png")
+$color : 	red  (#FFFF00, rgba(255,0,0,.5))
+$boolean : true (false)
+$null: null
+$list	: a, b, c 
+>> 배열처럼
+$map: (
+  a: red,
+  b: orange,
+);	
+>> list와 유사하나 값이 Key: Value 형태	
+
+
+
+
+
+
+[ 반복문 @each ]
+@each $변수 in $list{
+  .클래스{
+    속성: $변수
+  }
+}
+for과 다르게 배열이나 객체처럼 list, map에 사용
+
+@each $키, $값 in $list{}
+
+--------------------------
+
+$map: (
+  a: red,
+  b: orange,
+);	
+
+@each $k, $v in $map{
+  .a-#{$k}{
+      color:$v;
+  }
+}
+
+// 키와 값이 들어감
+.a-a {
+  color: red;
+}
+
+.a-b {
+  color: orange;
+}
+
+
+
+
+
+[ 재활용 @content ]
+mixin 에서 content 사용
+
+@mixin center{
+  display:flex;
+  justify-content:center;
+  align-items: center;
+  @content;
+}
+
+.aa{
+  top:0;
+  @include center {
+      bottom:0;
+      right:0;
+      margin:0;
+  }
+}
+
+@include에 mixin이름 사용하여 내용 추가
+mixin에 @content 넣으면 
+해당 mixin에 추가된 내용 추가됨

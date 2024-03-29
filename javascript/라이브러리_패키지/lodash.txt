@@ -1,0 +1,58 @@
+lodash
+- 자바스크립트 라이브러리
+
+
+
+
+- loadsh 설치
+npm install loadsh
+
+>>
+  "dependencies": {
+    "loadsh": "^0.0.4"
+  }
+
+- 최신 버전 확인
+npm info 이름
+ex)npm info lodash
+
+- 버전 인스톨
+ex)npm install lodash@4.17.21
+
+- 버전 업데이트
+npm update lodash
+
+
+
+
+- .concat
+배열1.concat(배열2)
+>> 배열1 + 배열2
+
+- .uniqBy
+_.uniqBy(배열, '속성값')
+>> 중복배열 제거
+>> 하나의 배열 데이터에서 특정 속성의 이름으로 고유화 시킴
+
+- .unionBy
+const 새배열 = _.unionBy(배열1, 배열2, '속성값')
+>> 중복배열 제거
+>> 여러 배열 데이터에서 특정 속성의 이름으로 고유화 시킴
+>> 배열이 하나가 되기 전에 사용
+
+
+
+
+- .find
+const 변수 = _.find(배열, { 키 : 값 })
+>> 찾은 객체 출력
+
+
+- .findIndex
+_.find(배열, { 키 : 값 })
+>> 찾은 객체 순번 출력
+
+- .remove
+_.remove(배열, { 키 : 값 })
+>> 배열에서 해당 객체 삭제
+

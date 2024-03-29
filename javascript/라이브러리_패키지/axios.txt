@@ -1,0 +1,14 @@
+http요청을 처리해주는 자바스크립트 패키지
+
+https://github.com/axios/axios
+
+
+- axios 설치
+
+npm install axios
+npm i axios
+
+
+axios.get('주소').then((response)=>{
+    console.log(response)
+})
