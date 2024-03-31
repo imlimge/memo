@@ -1,0 +1,93 @@
+화면 및 px 단위
+
+- 화면 사이즈 점유율 사이트
+https://gs.statcounter.com/
+
+
+(점유율 참고 24.03)
+PC 스크린
+- 1920 * 1080
+- 1366 * 768
+
+태블릿
+- 768 * 1024
+- 810 * 1080
+
+모바일
+- 360 * 800
+- 390 * 844
+
+(다른 사이즈 참고)
+- 360 * 640 (안드로이드 기준)
+- 375 * 667 (iOS 기준)
+
+>> 안드로이드 기준으로 셋팅 후 여백 15px만큼 우측 하단 늘려서 대응하기도 함
+
+
+---------------------
+
+
+데스크탑 1920 (1200)
+태블릿 640 (768)
+모바일 320 (360)
+
+
+-------------------
+
+참고: https://apost.dev/823/
+
+[ 대중적인 사이즈 레이아웃 ]
+
+/* 데스크탑 */
+
+@media screen and (max-width:1023px) {
+/* 타블렛 */
+}
+
+@media screen and (max-width:767px) {
+/* 모바일 */
+}
+
+
+
+
+
+[ 가로모드 지원 반응형 레이아웃 ]
+
+/* 빅데스크탑 */
+
+@media screen and (max-width:1799px) {
+/* 데스크탑 */
+}
+
+@media screen and (max-width:1199px) {
+/* 타블렛 가로 */
+}
+@media screen and (max-width:899px) {
+/* 모바일 가로, 타블렛 세로 */
+}
+
+@media screen and (max-width:599px) {
+/* 모바일 세로 */
+}
+
+
+
+
+[ 부트스트랩 레이아웃 ]
+/* 스마트폰 세로 */
+
+@media screen and (min-width:576px) {
+/* 스마트폰 가로 */
+}
+
+@media screen and (min-width:768px) {
+/* 타블렛 */
+}
+@media screen and (min-width:992px) {
+/* 데스크탑 */
+}
+
+@media screen and (min-width:1200px) {
+/* 큰 데스크탑 */
+}

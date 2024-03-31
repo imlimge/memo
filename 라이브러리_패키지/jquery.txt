@@ -1,0 +1,37 @@
+jquery 제이쿼리 
+- 자바스크립트 라이브러리
+
+https://jquery.com/
+
+
+1) 압축버전 : compressed 버전
+-> 서버 배포 시 사용, 1/3의 적은 용량, 이름에 min
+
+2) 비압축버전 : uncompressed 버전
+
+
+
+[ 링크로 넣을 때 - CDN(Content Delivery Network) ]
+제이쿼리 공식사이트
+https://releases.jquery.com/
+구글링크
+https://developers.google.com/speed/libraries?hl=ko#jquery
+
+<!-- 제이쿼리 라이브러리 CDN -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<!-- 제이쿼리 UI CDN -->
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
+
+참고하여 스크립트 복사
+
+
+
+[ 다운로드 ]
+사이트에서 다운로드하여 import 하여 사용
+
+
+[ npm 설치 ]
+npm install jquery
+사용:
+import $ from 'jquery';
+

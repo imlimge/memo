@@ -1,0 +1,113 @@
+React 리액트 
+- 자바스크립트 라이브러리
+
+
+https://ko.legacy.reactjs.org/
+
+
+
+[ 링크로 넣을 때 - CDN(Content Delivery Network)]
+https://ko.legacy.reactjs.org/docs/cdn-links.html
+
+<!-- 1.리액트 기본 라이브러리 -->
+<script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+<!-- 2.리액트 가상돔 라이브러리 -->
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+<!-- 3.리액트 바벨 라이브러리 -->
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+
+
+<!-- 아래쪽에 나의 JS : 반드시 type="text/babel" 쓸것! -->
+<!-- import할 모듈JS가 위쪽에 위치 -->
+<script src="모듈JS" data-plugins="transform-es2015-modules-umd" type="text/babel"></script>
+<!-- 메인 JS가 아래쪽에 위치 -->
+<script src="메인JS" data-plugins="transform-es2015-modules-umd" type="text/babel"></script>
+
+
+
+
+[ 설치 ]
+- nodejs 설치
+>>설치 후 확인 폴더
+C:\Program Files\nodejs
+
+>>시스템 환경변수(PATH)에 등록
+(노드설치시 자동등록 되지만 확인 필요, 재부팅)
+예) C:\Program Files\nodejs 
+
+
+- 기존 리액트 앱 삭제
+npm uninstall -g create-react-app
+
+- 설치
+npm i (npm install)
+
+
+---------------------------------
+npx로 설치
+
+- 폴더 생성하며 설치
+npx create-react-app 폴더이름
+
+
+[ NPX (Node Package eXecute)]
+
+npx는 bin 형태로 배포되는 npm 패키지를 위한 툴
+node.js를 설치하면 동시에 설치됨
+npx { command } 방식으로 호출
+
+npx는 우선적으로 로컬 프로젝트 실행파일을 찾음
+로컬 프로젝트에 없으면 최신 버전의 모듈을 설치
+
+
+---------------------------------
+추가 설치
+
+- 리액트 돔 설치
+npm i react react-dom
+
+
+- 라우터 설치
+npm i react-router-dom
+- 최신라우터 업그레이드
+npm i react-router-dom@latest
+
+
+- 부트스트랩 설치
+npm install react-bootstrap bootstrap
+
+
+- 제이쿼리 설치
+npm install jquery
+또는 npm i jquery
+사용:
+import $ from 'jquery';
+
+
+- 제이쿼리 UI설치
+npm i jquery-ui-dist
+사용:
+import 'jquery-ui-dist/jquery-ui';
+
+- 제이쿼리 UI 드래그, 모바일 터치
+npm i jquery-ui-touch-punch
+사용:
+import $ from 'jquery';
+window.jQuery = $;
+require('jquery-ui-dist/jquery-ui');
+require('jquery-ui-touch-punch/jquery.ui.touch-punch');
+
+
+
+
+------------------------
+package-lock.json 파일 있는 경우
+
+cd 명령어로 프로젝트까지 이동 후 클린 인스톨
+
+npm ci
+
+
+실행
+npm start
