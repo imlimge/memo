@@ -1,0 +1,6 @@
+기본 플러그인
+- Unsplash (무료 이미지 사이트)
+- Arrow Auto (화살표)
+- Lorem Ipusum (텍스트)
+- Similayer (비슷한 유형의 요소 선택)
+- Material Design Icons (아이콘)

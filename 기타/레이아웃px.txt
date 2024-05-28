@@ -75,7 +75,7 @@ PC 스크린
 
 
 [ 부트스트랩 레이아웃 ]
-/* 스마트폰 세로 */
+
 
 @media screen and (min-width:576px) {
 /* 스마트폰 가로 */
