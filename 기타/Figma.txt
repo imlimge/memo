@@ -4,3 +4,24 @@
 - Lorem Ipusum (텍스트)
 - Similayer (비슷한 유형의 요소 선택)
 - Material Design Icons (아이콘)
+- chart (그래프 차트)
+- Charts (그래프 차트)
+- confetti (랜덤 요소로 패턴만들기)
+- map maker (지도)
+- contents reel (임의의 콘텐츠 이미지 텍스트)
+
+
+
+
+[google sheet sync Link]
+
+//
+pages 에서 스프레드 시트의 이름과 연동
+
+# 
+컴포넌트 요소의 공통된 이름 스프레드 시트 내용에서 bold 처리
+1번열에 #의 공통 이름을 넣어주고
+2~이하에 여러가지 내용 입력
+
+스프레드 싱크에 공개로 링크 복사 후
+피그마 플러그인에서 주소 넣고 fetch&sync
