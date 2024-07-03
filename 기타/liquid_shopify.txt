@@ -1,0 +1,172 @@
+- 쇼피파이에서 사용하는 liquid ---
+
+https://github.com/Shopify/liquid
+
+
+
+
+
+
+--------------------------------------
+
+{{ }}
+
+- 객체 및 필터와 같은 출력을 나타내는 liquid 구분 기호
+Liquid delimiter that denotes output, such as objects and filters
+
+{{ page.title }}
+>> 페이지 타이틀 출력
+
+{{ 'bob' | upcase }}
+>> BOB
+--------------------------------------
+
+{% %}
+
+- 논리, 즉 변수,조건 및 루프(태그)를 나타내는 liquid 구분 기호
+Liquid delimiter that denotes logic, that is variables, conditions and loops (tags)
+
+
+{% if user %}
+  Hello {{ user.name }}!
+{% endif %}
+
+>> Hello lim!
+
+
+
+{% if subscriber.membership_level == "Gold" %}
+  Congratulations on reaching Gold level membership!
+{% endif %}
+
+>> Congratulations on reaching Gold level membership!
+
+
+
+
+
+
+
+--------------------------------------
+
+
+
+if,else if, else 구문 예시
+
+{% if customer.name == "kevin" %}
+  Hey Kevin!
+{% elsif customer.name == "anonymous" %}
+  Hey Anonymous!
+{% else %}
+  Hi Stranger!
+{% endif %}
+
+단어 포함 체크
+{% if product.tags contains 'healing' %}
+This potion contains restorative properties.
+{% endif %}
+
+
+출처: https://trend21c.tistory.com/2339 
+
+
+
+반복문
+{% for 변수 in 배열 %} ... {% endfor %}
+
+
+
+
+
+
+----------------------------------------------------------------------
+
+
+쇼피파이 코드수정에서 섹션 생성 예시
+
+>>코드수정에서 Sections > section.liquid 추가
+
+-----------------
+<style> 
+</style>
+
+<div>
+</div>
+
+{% schema %}
+{% endschema %}
+-----------------
+
+- style에는 css 설정
+ .section-{{ section.id }}.클래스이름 {}
+
+- div 클래스이름 설정하여 생성 html 코드 구성
+class="section-{{ section.id }} 클래스이름 "
+
+-{% schema %} 는 쇼피파이 테마에서 섹션,블록,테마 설정 정의할 때 사용함
+기본적으로 정해진 규칙이 있다.
+https://shopify.dev/docs/storefronts/themes/architecture/sections/section-schema#name
+(스키마 설정 규칙 참고)
+
+schema : 스키마 (개요)
+데이터베이스에서 자료의 구조, 자료의 표현 방법, 자료 간의 관계를 형식 언어로 정의한 구조
+
+
+
+
+
+{% schema %}
+{
+  // JSON 형식의 설정 내용
+}
+
+>> 대략 이러한 구조를 가짐
+
+
+
+예를들어 슬라이드쇼 섹션 설정 시
+/sections/slideshow.liquid
+
+
+{% schema %}
+{
+  "name": "Slideshow",  >> 섹션 이름지정 / 해당 이름으로 쇼피파이 테마 수정에서 불러 올 수 있다.
+  "tag": "section", >> 태그의 형태. 명시하지 않으면 기본적으로 div. 
+  "class": "slideshow", >> 클래스 이름 지정
+  "settings": [ >> 섹션에 대한 세팅
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Slideshow"
+    }
+  ],
+  "blocks": [ >> 블록 세팅
+     {
+       "name": "Slide",
+       "type": "slide",
+       "settings": [ >> 블록에 대한 세팅
+         {
+           "type": "image_picker",
+           "id": "image",
+           "label": "Image"
+         }
+       ]
+     }
+   ]
+}
+{% endschema %}
+
+
+schema에서 설정할 수 있는 셋팅값
+- name, tag, class, limit, settings, blocks, max_blocks, presets, default, locales, enabled_on 
+
+
+
+
+
+
+----------------------------------------------------------------------
+
+- snippet
+스니펫 : 작은 조각, 재사용 가능한 소스코드, 기계어, 텍스트의 작은 부분
+
